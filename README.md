@@ -20,25 +20,33 @@ Will be replaced with
 echo "evil"\n
 ```
 
-Note the newline character gets appended to the end of the line. When a user goes to paste the echo command into their terminal, "evil" will automatically get echoed to the screen without giving the user a chance to review the command before it excecutes. More sophisticated payloads that hide themselves can also be used, such as something like
+Note the newline character gets appended to the end of the line. When a user goes to paste the echo command into their terminal, "evil" will automatically get echoed to the screen without giving the user a chance to review the command before it excecutes. More sophisticated payloads that hide themselves can also be used, such as something [demoed here](https://security.love/Pastejacking/index3.html) and seen below
 
 ```bash
-stty -echo;tput smcup;touch ~/.evil
+touch ~/.evil
+clear
 echo "not evil"
 ```
 
-This command will create an evil file in your home directory without outputting any suspicious text to the terminal. The victim appears to have the command they intended to copy, nicely pasted into the terminal.
+This command will create an evil file in your home directory and clear the terminal out. The victim appears to have the command they intended to copy, nicely pasted into the terminal.
 
 
 ## Impact
 This method can be combined with a phishing attack to entice users into running seemingly innocent commands. The malicious code will override the innocent code, and the attacker can gain remote code excicution on the user's host if the user pastes the contents into the terminal.
 
 ## How do you protect yourself?
-This is not so straight forward. One solution may be to verify the contents of your clipboard before pasting into a terminal, but be careful where you verify these commands. For example if you paste into vim, vim macros may be used to exploit you. One solution around this can be seen below
+This is not so straight forward. One solution may be to verify the contents of your clipboard before pasting into a terminal, but be careful where you verify these commands. For example if you paste into vim, vim macros may be used to exploit you. An example of this can be seen [in this demo](https://security.love/Pastejacking/index2.html) and below
+
+```javascript
+copyTextToClipboard('echo "evil"\n \x1b:!cat /etc/passwd\n');
+```
+
+This demo echo evil when pasted in terminal, and it will cat the user's /etc/passwd file when pasted into vim.
+
+One solution around this can be seen below
 
 ```bash
-^X^E      -- to launch vim and exec contents after
-"+p       -- within vim to paste clipboard without interpreting as vim macro
+"+p       -- within vim to paste clipboard without interpreting as vim command
 ```
 
 Of course it goes without saying, take note of the source you're pasting from, and exercise additional caution if pasting from questionable sources.
