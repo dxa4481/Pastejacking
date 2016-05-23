@@ -2,7 +2,7 @@
 
 Browsers [now allow](https://developer.mozilla.org/en-US/docs/Web/API/Document/execCommand) developers to automatically add content to a user's clipboard, following certain conditions. Namely, this can only be triggered on browser events. This post details how you can exploit this to trick a user into running commands they didn't want to get ran, and gain code excicution.
 
-It should also be noted, for some time similar attacks have been possible via [html/css](https://thejh.net/misc/website-terminal-copy-paste).
+It should also be noted, for some time similar attacks have been possible via [html/css](https://thejh.net/misc/website-terminal-copy-paste). What's different about this is the text can be copied after an event, it can be copied on a short timer following an event, and it's easier to copy in hex charecters into the clipboard, which can be used to exploit VIM, all shown below.
 
 ## Demo
 
