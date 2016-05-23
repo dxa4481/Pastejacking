@@ -2,7 +2,7 @@
 
 Browsers [now allow](https://developer.mozilla.org/en-US/docs/Web/API/Document/execCommand) developers to automatically add content to a user's clipboard, following certain conditions. Namely, this can only be triggered on browser events. This post details how you can exploit this to trick a user into running commands they didn't want to get ran, and gain code excicution.
 
-It should also be noted, for some time similar attacks have been possible via [css](https://thejh.net/misc/website-terminal-copy-paste).
+It should also be noted, for some time similar attacks have been possible via [html/css](https://thejh.net/misc/website-terminal-copy-paste).
 
 ## Demo
 
