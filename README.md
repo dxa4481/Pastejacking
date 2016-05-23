@@ -49,4 +49,8 @@ One solution around this can be seen below
 "+p       -- within vim to paste clipboard without interpreting as vim command
 ```
 
+If you're running iTerm, you will actually get warned if the command ends with a newline as seen here:
+
+![iTerm](http://i.imgur.com/W8pweF1.png) 
+
 Of course it goes without saying, take note of the source you're pasting from, and exercise additional caution if pasting from questionable sources.
