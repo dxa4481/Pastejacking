@@ -32,7 +32,7 @@ This command will create an evil file in your home directory and clear the termi
 
 
 ## Impact
-This method can be combined with a phishing attack to entice users into running seemingly innocent commands. The malicious code will override the innocent code, and the attacker can gain remote code excicution on the user's host if the user pastes the contents into the terminal.
+This method can be combined with a phishing attack to entice users into running seemingly innocent commands. The malicious code will override the innocent code, and the attacker can gain remote code execution on the user's host if the user pastes the contents into the terminal.
 
 ## How do you protect yourself?
 This is not so straight forward. One solution may be to verify the contents of your clipboard before pasting into a terminal, but be careful where you verify these commands. For example if you paste into vim, vim macros may be used to exploit you. An example of this can be seen [in this demo](https://security.love/Pastejacking/index2.html) and below
