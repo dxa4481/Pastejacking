@@ -41,7 +41,7 @@ This is not so straight forward. One solution may be to verify the contents of y
 copyTextToClipboard('echo "evil"\n \x1b:!cat /etc/passwd\n');
 ```
 
-This demo echo evil when pasted in terminal, and it will cat the user's /etc/passwd file when pasted into vim.
+This demo **echo evil** when pasted in terminal, and it will cat the user's /etc/passwd file when pasted into vim.
 
 One solution around this can be seen below
 
