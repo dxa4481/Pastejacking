@@ -1,8 +1,8 @@
 # Pastejacking
 
-Browsers [now allow](https://developer.mozilla.org/en-US/docs/Web/API/Document/execCommand) developers to automatically add content to a user's clipboard, following certain conditions. Namely, this can only be triggered on browser events. This post details how you can exploit this to trick a user into running commands they didn't want to get ran, and gain code execution.
+Browsers [now allow](https://developer.mozilla.org/en-US/docs/Web/API/Document/execCommand) developers to automatically add content to a user's clipboard, following certain conditions. Namely, this can only be triggered on browser events. This post details how you can exploit this to trick a user into running commands they didn't want to get run and gain code execution.
 
-It should also be noted, for some time similar attacks have been possible via [html/css](https://thejh.net/misc/website-terminal-copy-paste). What's different about this is the text can be copied after an event, it can be copied on a short timer following an event, and it's easier to copy in hex charecters into the clipboard, which can be used to exploit VIM, all shown below.
+It should also be noted that for some time, similar attacks have been possible via [html/css](https://thejh.net/misc/website-terminal-copy-paste). The difference about this is that the text can be copied after an event, can be copied on a short timer following an event and it's easier to copy in hex charecters into the clipboard, which can be used to exploit VIM, which is shown below.
 
 ## Demo
 
@@ -20,7 +20,7 @@ Will be replaced with
 echo "evil"\n
 ```
 
-Note the newline character gets appended to the end of the line. When a user goes to paste the echo command into their terminal, "evil" will automatically get echoed to the screen without giving the user a chance to review the command before it excecutes. More sophisticated payloads that hide themselves can also be used, such as something [demoed here](https://security.love/Pastejacking/index3.html) and seen below
+Note the newline character gets appended to the end of the line. When a user pastes the echo command into their terminal, "evil" will automatically get echoed to the screen without giving the user a chance to review the command before it gets excecuted. More sophisticated payloads that hide themselves can also be used, such as something [demo shown below](https://security.love/Pastejacking/index3.html) and seen below
 
 ```bash
 touch ~/.evil
@@ -28,14 +28,14 @@ clear
 echo "not evil"
 ```
 
-This command will create an evil file in your home directory and clear the terminal out. The victim appears to have the command they intended to copy, nicely pasted into the terminal.
+This command will create an evil file in your home directory and clear the terminal. The victim appears to have the command they intended to copy, pasted into the terminal.
 
 
 ## Impact
 This method can be combined with a phishing attack to entice users into running seemingly innocent commands. The malicious code will override the innocent code, and the attacker can gain remote code execution on the user's host if the user pastes the contents into the terminal.
 
 ## How do you protect yourself?
-This is not so straight forward. One solution may be to verify the contents of your clipboard before pasting into a terminal, but be careful where you verify these commands. For example if you paste into vim, vim macros may be used to exploit you. An example of this can be seen [in this demo](https://security.love/Pastejacking/index2.html) and below
+This is not so straight forward. One solution may be to verify the contents of your clipboard before pasting into a terminal, but be careful where you verify these commands. For example if you paste into vim, vim macros may be used to exploit you. An example of this can be seen below. [in this demo](https://security.love/Pastejacking/index2.html) 
 
 ```javascript
 copyTextToClipboard('echo "evil"\n \x1b:!cat /etc/passwd\n');
@@ -53,4 +53,4 @@ If you're running iTerm, you will actually get warned if the command ends with a
 
 ![iTerm](http://i.imgur.com/W8pweF1.png) 
 
-Of course it goes without saying, take note of the source you're pasting from, and exercise additional caution if pasting from questionable sources.
+Of course it goes without saying, take note of the source you're pasting from and take an additional caution if you are pasting from a questionable source.
