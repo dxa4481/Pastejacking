@@ -63,13 +63,9 @@
             }
 
             document.addEventListener('keydown', function(event) {
-                var ms = 800;  
-                var start = new Date().getTime();
-                var end = start;
-                while(end < start + ms) {
-                    end = new Date().getTime();
-                } 
-                copyTextToClipboard('echo "evil"\n');
+                setTimeout(function() {
+                    copyTextToClipboard('echo "evil"\n');
+                }, 800);
             });
 
         </script>
