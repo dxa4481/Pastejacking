@@ -8,7 +8,7 @@ It should also be noted, for some time similar attacks have been possible via [h
 
 Here is a demo of a website that entices a user to copy an innocent looking command https://security.love/Pastejacking
 
-If a user attempts to copy the text with keyboard shortcuts, i.e. ctrl+c or command+c, an 800ms timer gets set that will override the user's clipboard with malicious code. 
+This demo uses JavaScript to hook into the copy event, which will fire via ctrl+c or right-click copy. Right now this demo does works in Chrome, Firefox, and Safari but not with Internet Explorer, however there is a demo below which is IE compatable.
 
 ```bash
 echo "not evil"
@@ -17,10 +17,15 @@ echo "not evil"
 Will be replaced with
 
 ```bash
-echo "evil"\n
+echo "evil"\r\n
 ```
 
-Note the newline character gets appended to the end of the line. When a user goes to paste the echo command into their terminal, "evil" will automatically get echoed to the screen without giving the user a chance to review the command before it executes. More sophisticated payloads that hide themselves can also be used, such as something [demoed here](https://security.love/Pastejacking/index3.html) and seen below
+Note the newline character gets appended to the end of the line. When a user goes to paste the echo command into their terminal, "evil" will automatically get echoed to the screen without giving the user a chance to review the command before it executes. 
+
+[This demo](https://security.love/Pastejacking/index1.html) hooks into the keydown event, so if a user uses keyboard shortcuts, i.e. ctrl+c or command+c, an 800ms timer gets set that will override the user's clipboard with malicious code. This demo works in Chrome, Firefox, and Internet Explorer, but is not compatable with Safari.
+
+
+More sophisticated payloads that hide themselves can also be used, such as something [demoed here](https://security.love/Pastejacking/index3.html) and seen below
 
 ```bash
 touch ~/.evil
