@@ -8,7 +8,7 @@ It should also be noted, for some time similar attacks have been possible via [h
 
 Here is a demo of a website that entices a user to copy an innocent looking command https://security.love/Pastejacking
 
-This demo uses JavaScript to hook into the copy event, which will fire via ctrl+c or right-click copy. Right now this demo does works in Chrome, Firefox, and Safari but not with Internet Explorer, however there is a demo below which is IE compatable.
+This demo uses JavaScript to hook into the copy event, which will fire via ctrl+c or right-click copy. Right now this demo does works in Chrome, Firefox, and Safari but not with Internet Explorer, however there is a demo below which is IE compatible.
 
 ```bash
 echo "not evil"
