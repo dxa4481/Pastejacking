@@ -2,9 +2,13 @@
     <body>
         Copy the text below and run it in your terminal for totally not evil things to happen.
         </br>
+        <noscript>
+           echo "not evil"
 
-        <p>echo "not evil"</p>
+        </noscript>
+        <p id="normal" style="display: none">echo "not evil"</p>
         <script>
+            document.getElementById("normal").style.display = 'inline-block';
             function copyTextToClipboard(text) {
               var textArea = document.createElement("textarea");
 
